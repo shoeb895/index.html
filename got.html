@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoeb - Professional Profile</title>
+    <style>
+        /* Base Styles & Background */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #333; 
+            line-height: 1.6; 
+            background-color: #f0f4f8; /* Soft light blue/grey background */
+            overflow-x: hidden;
+        }
+
+        /* Gradient & Animated Header */
+        header { 
+            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%); 
+            color: #fff; 
+            text-align: center; 
+            padding: 6rem 1rem 7rem 1rem; 
+            position: relative;
+        }
+        
+        header h1 { 
+            margin: 0; 
+            font-size: 3.5rem; 
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p { 
+            font-size: 1.2rem; 
+            color: #e0e0e0; 
+            margin-top: 10px; 
+            font-weight: 300;
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        /* Main Container */
+        .container { 
+            max-width: 1000px; 
+            margin: auto; 
+            padding: 2.5rem; 
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: -4rem;
+            border-radius: 12px;
+            position: relative;
+            animation: slideUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        h2 { 
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(to right, #2b5876, transparent) 1;
+            padding-bottom: 0.5rem; 
+            color: #2b5876; 
+            margin-top: 2rem;
+        }
+
+        .section { 
+            margin-bottom: 3rem; 
+            animation: fadeIn 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Staggered animation delays for sections */
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+
+        /* Colorful Grid Cards */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 1.8rem; 
+            margin-top: 2rem; 
+        }
+
+        .card { 
+            background: #ffffff; 
+            padding: 1.8rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Custom Colors for each card border */
+        .card:nth-child(1) { border-bottom: 4px solid #ff6b6b; }
+        .card:nth-child(2) { border-bottom: 4px solid #4ecdc4; }
+        .card:nth-child(3) { border-bottom: 4px solid #feca57; }
+
+        /* Hover Animation for Cards */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(43,88,118,0.05) 0%, rgba(78,67,118,0.05) 100%);
+            z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #1a1a1a;
+            font-size: 1.3rem;
+        }
+
+        /* Links and Footer */
+        ul { list-style-type: none; padding: 0; }
+        ul li { margin-bottom: 10px; font-size: 1.1rem; }
+        
+        a { 
+            color: #4e4376; 
+            text-decoration: none; 
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #ff6b6b;
+            text-decoration: underline;
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 2rem 0; 
+            color: #777;
+            font-size: 0.9rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Shoeb</h1>
+        <p>BCA Graduate | Digital Marketer | Entrepreneur</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section">
+            <h2>About Me</h2>
+            <p>Namaste! Main technology aur digital marketing ke cross-section par kaam karta hoon. Ek solid technical foundation ke saath, mera vision unique business ideas ko scale karna aur high-quality brand presence build karna hai. Main hamesha nayi chizon ko seekhne aur unhe real-world projects me apply karne ke liye passionate rehta hoon.</p>
+        </div>
+
+        <div class="section">
+            <h2>Core Expertise & Projects</h2>
+            <div class="skills-grid">
+                <div class="card">
+                    <h3>Tech & IT Foundations</h3>
+                    <p>Computer applications aur software systems me strong background. Problem-solving aur technical optimization me maharat.</p>
+                </div>
+                <div class="card">
+                    <h3>Brand Identity & Marketing</h3>
+                    <p>Products ke liye custom logos, banners aur advertisement videos design karna taaki brand ki value market me badhe.</p>
+                </div>
+                <div class="card">
+                    <h3>Visual & Setup Design</h3>
+                    <p>Professional environments design karna aur cinematic visual quality ke saath content create karna.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contact</h2>
+            <p>Naye business ventures aur collaborations ke liye mujhse sampark karein:</p>
+            <ul>
+                <li>📧 <strong>Email:</strong> shoeb@example.com</li>
+                <li>📱 <strong>Phone:</strong> +91-XXXXX-XXXXX</li>
+                <li>💼 <strong>LinkedIn:</strong> <a href="#">linkedin.com/in/shoeb-profile</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Shoeb. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
