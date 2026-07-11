@@ -3,215 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoeb - Professional Profile</title>
+    <title>NextGen Ventures | The Future</title>
+    
+    <!-- CSS yahan se shuru hota hai -->
     <style>
-        /* Base Styles & Background */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: #333; 
-            line-height: 1.6; 
-            background-color: #f0f4f8; /* Soft light blue/grey background */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: none; /* Hiding default cursor for our custom one */
+        }
+
+        body {
+            background-color: #050505;
+            color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* Gradient & Animated Header */
-        header { 
-            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%); 
-            color: #fff; 
-            text-align: center; 
-            padding: 6rem 1rem 7rem 1rem; 
-            position: relative;
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00ffcc;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 9999;
         }
-        
-        header h1 { 
-            margin: 0; 
-            font-size: 3.5rem; 
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             letter-spacing: 2px;
-            animation: fadeInDown 1s ease-out;
         }
 
-        header p { 
-            font-size: 1.2rem; 
-            color: #e0e0e0; 
-            margin-top: 10px; 
+        .logo span {
+            color: #00ffcc;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
             font-weight: 300;
-            animation: fadeInDown 1.2s ease-out;
+            transition: color 0.3s;
         }
 
-        /* Main Container */
-        .container { 
-            max-width: 1000px; 
-            margin: auto; 
-            padding: 2.5rem; 
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-top: -4rem;
-            border-radius: 12px;
-            position: relative;
-            animation: slideUp 1s ease-out forwards;
-            opacity: 0;
+        .nav-links a:hover {
+            color: #00ffcc;
         }
 
-        h2 { 
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(to right, #2b5876, transparent) 1;
-            padding-bottom: 0.5rem; 
-            color: #2b5876; 
-            margin-top: 2rem;
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
         }
 
-        .section { 
-            margin-bottom: 3rem; 
-            animation: fadeIn 1.5s ease-out forwards;
-            opacity: 0;
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
         }
 
-        /* Staggered animation delays for sections */
-        .section:nth-child(1) { animation-delay: 0.2s; }
-        .section:nth-child(2) { animation-delay: 0.4s; }
-        .section:nth-child(3) { animation-delay: 0.6s; }
-
-        /* Colorful Grid Cards */
-        .skills-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 1.8rem; 
-            margin-top: 2rem; 
+        .hero h1 span {
+            background: linear-gradient(90deg, #00ffcc, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .card { 
-            background: #ffffff; 
-            padding: 1.8rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
         }
 
-        /* Custom Colors for each card border */
-        .card:nth-child(1) { border-bottom: 4px solid #ff6b6b; }
-        .card:nth-child(2) { border-bottom: 4px solid #4ecdc4; }
-        .card:nth-child(3) { border-bottom: 4px solid #feca57; }
+        .btn {
+            padding: 15px 30px;
+            border: 1px solid #00ffcc;
+            background: transparent;
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
 
-        /* Hover Animation for Cards */
+        .btn:hover {
+            background: #00ffcc;
+            color: #050505;
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(43,88,118,0.05) 0%, rgba(78,67,118,0.05) 100%);
-            z-index: -1;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.4s ease;
-        }
-
-        .card:hover::before {
-            transform: scaleY(1);
+            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.2);
         }
 
         .card h3 {
-            margin-top: 0;
-            color: #1a1a1a;
-            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00ffcc;
         }
 
-        /* Links and Footer */
-        ul { list-style-type: none; padding: 0; }
-        ul li { margin-bottom: 10px; font-size: 1.1rem; }
-        
-        a { 
-            color: #4e4376; 
-            text-decoration: none; 
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        
-        a:hover {
-            color: #ff6b6b;
-            text-decoration: underline;
+        /* Scroll Animation Classes */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
         }
 
-        footer { 
-            text-align: center; 
-            padding: 2rem 0; 
-            color: #777;
-            font-size: 0.9rem;
-            animation: fadeIn 2s ease-out;
-        }
-
-        /* --- Keyframe Animations --- */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
 
-    <header>
-        <h1>Shoeb</h1>
-        <p>BCA Graduate | Digital Marketer | Entrepreneur</p>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">NEXT<span>GEN</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#vision">Our Vision</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        
-        <div class="section">
-            <h2>About Me</h2>
-            <p>Namaste! Main technology aur digital marketing ke cross-section par kaam karta hoon. Ek solid technical foundation ke saath, mera vision unique business ideas ko scale karna aur high-quality brand presence build karna hai. Main hamesha nayi chizon ko seekhne aur unhe real-world projects me apply karne ke liye passionate rehta hoon.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content hidden">
+            <h1>Redefining The <span>Future</span></h1>
+            <p>Experience ultra-high-definition digital presence. We are building something truly unique.</p>
+            <a href="#vision" class="btn">Explore Now</a>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>Core Expertise & Projects</h2>
-            <div class="skills-grid">
-                <div class="card">
-                    <h3>Tech & IT Foundations</h3>
-                    <p>Computer applications aur software systems me strong background. Problem-solving aur technical optimization me maharat.</p>
-                </div>
-                <div class="card">
-                    <h3>Brand Identity & Marketing</h3>
-                    <p>Products ke liye custom logos, banners aur advertisement videos design karna taaki brand ki value market me badhe.</p>
-                </div>
-                <div class="card">
-                    <h3>Visual & Setup Design</h3>
-                    <p>Professional environments design karna aur cinematic visual quality ke saath content create karna.</p>
-                </div>
+    <!-- Features Section -->
+    <section id="vision" class="features">
+        <h2 class="hidden">Our Unique Approach</h2>
+        <div class="cards-container">
+            <div class="card hidden">
+                <h3>Cinematic Quality</h3>
+                <p>Bringing pristine, ultra-high-definition visual fidelity to every project and product branding.</p>
+            </div>
+            <div class="card hidden">
+                <h3>Innovative Marketing</h3>
+                <p>From eye-catching advertisement videos to seamless brand integration, we stand out.</p>
+            </div>
+            <div class="card hidden">
+                <h3>Exclusive Ventures</h3>
+                <p>Pioneering unique business strategies that disrupt the market and leave a lasting impact.</p>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>Contact</h2>
-            <p>Naye business ventures aur collaborations ke liye mujhse sampark karein:</p>
-            <ul>
-                <li>📧 <strong>Email:</strong> shoeb@example.com</li>
-                <li>📱 <strong>Phone:</strong> +91-XXXXX-XXXXX</li>
-                <li>💼 <strong>LinkedIn:</strong> <a href="#">linkedin.com/in/shoeb-profile</a></li>
-            </ul>
-        </div>
+    <!-- JavaScript yahan se shuru hota hai -->
+    <script>
+        // Custom Cursor Logic
+        const cursor = document.querySelector('.cursor');
 
-    </div>
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
 
-    <footer>
-        <p>&copy; 2026 Shoeb. All Rights Reserved.</p>
-    </footer>
+        // Add hover effect to links and buttons
+        const interactables = document.querySelectorAll('a, .btn, .card');
 
+        interactables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.backgroundColor = 'rgba(0, 255, 204, 0.2)';
+            });
+            item.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.backgroundColor = 'transparent';
+            });
+        });
+
+        // Scroll Reveal Animation using Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
