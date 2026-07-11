@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Ventures | The Future</title>
+    <title>NextGen | Ultra-HD Experience</title>
     
-    <!-- CSS yahan se shuru hota hai -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
 
@@ -14,26 +13,69 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Space Grotesk', sans-serif;
-            cursor: none; /* Hiding default cursor for our custom one */
+            cursor: none;
         }
 
         body {
-            background-color: #050505;
+            background-color: #030303;
             color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #00ffcc;
-            border-radius: 50%;
+        /* --- 1. Cinematic Pre-Loader --- */
+        #loader {
             position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: #030303;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 255, 204, 0.3);
+            border-top-color: #00ffcc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- 2. Custom Dual Cursor --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ffcc;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(0, 255, 204, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* --- 3. Dynamic Background Glow --- */
+        .bg-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,255,204,0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-            z-index: 9999;
+            z-index: -1;
+            transition: top 0.1s, left 0.1s ease-out;
         }
 
         /* Navigation */
@@ -41,148 +83,177 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             position: fixed;
             width: 100%;
             z-index: 100;
-            background: rgba(5, 5, 5, 0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(3, 3, 3, 0.3);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
-
-        .logo span {
-            color: #00ffcc;
-        }
+        .logo span { color: #00ffcc; }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
-
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            font-weight: 300;
-            transition: color 0.3s;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
+        .nav-links a:hover { color: #00ffcc; text-shadow: 0 0 10px #00ffcc; }
 
-        .nav-links a:hover {
-            color: #00ffcc;
-        }
-
-        /* Hero Section */
+        /* --- 4. Hero Section & Glitch Effect --- */
         .hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
         }
 
-        .hero h1 {
-            font-size: 5rem;
+        .glitch-wrapper {
+            font-size: 5.5rem;
+            font-weight: 700;
+            position: relative;
             margin-bottom: 1rem;
+            text-transform: uppercase;
         }
-
-        .hero h1 span {
-            background: linear-gradient(90deg, #00ffcc, #ff00ff);
+        .glitch-wrapper span {
+            background: linear-gradient(90deg, #ffffff, #00ffcc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #aaaaaa;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
+            font-size: 1.3rem;
+            color: #b3b3b3;
+            max-width: 650px;
+            margin: 0 auto 2.5rem auto;
+            line-height: 1.6;
         }
 
         .btn {
-            padding: 15px 30px;
+            padding: 15px 40px;
             border: 1px solid #00ffcc;
-            background: transparent;
+            background: rgba(0, 255, 204, 0.05);
             color: #00ffcc;
             text-decoration: none;
             font-size: 1.1rem;
-            border-radius: 30px;
-            transition: all 0.3s;
-            display: inline-block;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(5px);
         }
-
         .btn:hover {
             background: #00ffcc;
-            color: #050505;
-            box-shadow: 0 0 20px #00ffcc;
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.6);
+            transform: scale(1.05);
         }
 
-        /* Features Section */
+        /* --- 5. Floating Glass Features --- */
         .features {
-            padding: 100px 5%;
+            padding: 120px 5%;
             text-align: center;
+            position: relative;
         }
-
         .features h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(90deg, #fff, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cards-container {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
             flex-wrap: wrap;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            width: 300px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            width: 320px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
         }
+        /* Shine effect on card hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+        .card:hover::before { left: 100%; }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.2);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 255, 204, 0.15);
+            border: 1px solid rgba(0, 255, 204, 0.3);
         }
 
         .card h3 {
             margin-bottom: 1rem;
             color: #00ffcc;
+            font-size: 1.5rem;
+        }
+        .card p {
+            color: #999;
+            line-height: 1.6;
         }
 
-        /* Scroll Animation Classes */
+        /* Scroll Animation */
         .hidden {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.5, 0, 0, 1);
         }
-
-        .show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .show { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
+
+    <!-- Cinematic Pre-Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Dual Custom Cursor & Bg Glow -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="bg-glow"></div>
 
     <!-- Navigation -->
     <nav>
         <div class="logo">NEXT<span>GEN</span></div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#vision">Our Vision</a></li>
+            <li><a href="#vision">Vision</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -190,68 +261,94 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content hidden">
-            <h1>Redefining The <span>Future</span></h1>
-            <p>Experience ultra-high-definition digital presence. We are building something truly unique.</p>
-            <a href="#vision" class="btn">Explore Now</a>
+            <h1 class="glitch-wrapper">Building <span>The Future</span></h1>
+            <p>Pioneering unique business strategies with ultra-high-definition digital presence and cinematic visual fidelity.</p>
+            <a href="#vision" class="btn">Explore The Vision</a>
         </div>
     </section>
 
     <!-- Features Section -->
     <section id="vision" class="features">
-        <h2 class="hidden">Our Unique Approach</h2>
+        <h2 class="hidden">Exclusive Ventures</h2>
         <div class="cards-container">
             <div class="card hidden">
-                <h3>Cinematic Quality</h3>
-                <p>Bringing pristine, ultra-high-definition visual fidelity to every project and product branding.</p>
+                <h3>Visual Perfection</h3>
+                <p>Delivering pristine, ultra-HD cinematic quality that brings absolute fidelity to your digital identity.</p>
             </div>
             <div class="card hidden">
-                <h3>Innovative Marketing</h3>
-                <p>From eye-catching advertisement videos to seamless brand integration, we stand out.</p>
+                <h3>Brand Evolution</h3>
+                <p>Creating compelling marketing assets and modern packaging designs that disrupt the market.</p>
             </div>
             <div class="card hidden">
-                <h3>Exclusive Ventures</h3>
-                <p>Pioneering unique business strategies that disrupt the market and leave a lasting impact.</p>
+                <h3>Luxury Transformations</h3>
+                <p>Elevating standard ideas into premium, luxury experiences through cutting-edge design.</p>
             </div>
         </div>
     </section>
 
-    <!-- JavaScript yahan se shuru hota hai -->
     <script>
-        // Custom Cursor Logic
-        const cursor = document.querySelector('.cursor');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+        // --- 1. Remove Pre-loader on Window Load ---
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                document.getElementById("loader").style.opacity = "0";
+                setTimeout(() => {
+                    document.getElementById("loader").style.display = "none";
+                }, 800);
+            }, 1000); // Artificial delay to show the cool spinner
         });
 
-        // Add hover effect to links and buttons
-        const interactables = document.querySelectorAll('a, .btn, .card');
+        // --- 2. Advanced Custom Cursor & Background Glow ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        const bgGlow = document.querySelector('.bg-glow');
 
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Adding a slight delay to the outline for a smooth trailing effect
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+
+            // Move the background glow with the mouse
+            bgGlow.style.left = `${posX}px`;
+            bgGlow.style.top = `${posY}px`;
+        });
+
+        // Hover effects for links and buttons
+        const interactables = document.querySelectorAll('a, .btn, .card');
         interactables.forEach(item => {
             item.addEventListener('mouseenter', () => {
-                cursor.style.width = '40px';
-                cursor.style.height = '40px';
-                cursor.style.backgroundColor = 'rgba(0, 255, 204, 0.2)';
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.backgroundColor = 'rgba(0, 255, 204, 0.1)';
             });
             item.addEventListener('mouseleave', () => {
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-                cursor.style.backgroundColor = 'transparent';
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.backgroundColor = 'transparent';
             });
         });
 
-        // Scroll Reveal Animation using Intersection Observer
+        // --- 3. Scroll Reveal Animation ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                 }
             });
-        });
+        }, { threshold: 0.1 });
 
         const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
+        hiddenElements.forEach((el) => {
+            // Slight delay based on element index for a cascading effect
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
