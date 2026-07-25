@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Control Panel</h1>
+        <div class="nav"><a href="index.html">Homepage</a><a href="#" id="logoutBtn" style="color: #ff4500;">Logout</a></div>
+    </header>
+
+    <!-- Naya Match Add Karne Ka Form -->
+    <div class="form-container">
+        <h2 style="color: #ff4500; text-align: center; margin-top: 0;">ADD NEW MATCH</h2>
+        <form id="addMatchForm">
+            <div class="form-group"><label>Match Ka Naam</label><input type="text" id="title" required placeholder="e.g. FF Squad Battle #1"></div>
+            <div class="form-group"><label>Date aur Time</label><input type="text" id="time" required placeholder="e.g. Sunday, 8:00 PM"></div>
+            <div class="form-group"><label>Map</label><input type="text" id="map" required placeholder="e.g. Bermuda"></div>
+            <div class="form-group"><label>Entry Fee (₹)</label><input type="number" id="fee" required placeholder="e.g. 100"></div>
+            <div class="form-group"><label>Winning Prize (₹)</label><input type="number" id="prize" required placeholder="e.g. 1000"></div>
+            <div class="form-group"><label>Total Slots (Spots)</label><input type="number" id="slots" required placeholder="e.g. 48"></div>
+            <button type="submit" class="btn">Create Match</button>
+        </form>
+    </div>
+
+    <!-- Matches Manage (Delete) Karne Ka Section -->
+    <div class="form-container" style="margin-top: 20px; border-top: 4px solid #ff0000;">
+        <h2 style="color: #ff0000; text-align: center; margin-top: 0;">MANAGE MATCHES</h2>
+        <div id="adminMatchesList">
+            <!-- JS yahan matches dikhayega delete button ke sath -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

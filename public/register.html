@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Match</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🔥 JOIN BATTLE 🔥</h1>
+        <div class="nav"><a href="index.html">Cancel</a></div>
+    </header>
+
+    <div class="form-container">
+        <h2 style="color: #ff4500; text-align: center; margin-top: 0;">TEAM ENTRY</h2>
+        <p id="selectedMatchName" style="text-align:center; color:#ffcc00; font-weight:600; margin-bottom: 20px;"></p>
+        
+        <form id="registerForm">
+            <div class="form-group"><label>Team / Squad Naam</label><input type="text" id="teamName" required placeholder="e.g. Team BOOYAH"></div>
+            <div class="form-group"><label>Captain IGN</label><input type="text" id="captainName" required placeholder="FF In-game Name"></div>
+            <div class="form-group"><label>WhatsApp Number</label><input type="tel" id="whatsapp" required pattern="[0-9]{10}" placeholder="10 Digit Number"></div>
+            
+            <div class="qr-section">
+                <p style="color: #fff; font-size: 14px; margin-bottom: 10px;">Scan & Pay via UPI</p>
+                <img src="https://via.placeholder.com/150?text=Upload+QR" alt="QR" style="border-radius: 5px; width: 120px;">
+            </div>
+
+            <div class="form-group"><label>UPI Transaction ID</label><input type="text" id="txnId" required placeholder="e.g. 312345678901"></div>
+            <button type="submit" class="btn">Confirm Entry</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
